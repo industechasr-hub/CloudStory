@@ -3,6 +3,8 @@ import "dotenv/config"
 import morgan from 'morgan'
 import errorMiddleware from './middleware/errormiddleware.js'
 import connectDB from './config/dbConfig.js'
+import authRoute from './routes/authRouth.js'
+import bookRoute from './routes/bookRoute.js'
 
 const app = express()
 
@@ -21,6 +23,12 @@ app.get("/", (req, res) => {
 
 //Database connection
 connectDB()
+
+//Actual Route
+
+app.use('/api/auth', authRoute)
+
+app.use('/api/book', bookRoute )
 
 app.get("/error", (req, res) => {
     throw new Error("error from error route")
