@@ -5,6 +5,8 @@ import {
     Eye,
     EyeOff,} from "lucide-react";
 
+import { Link } from "react-router-dom";
+
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("")
@@ -118,12 +120,12 @@ const Login = () => {
                 {/* Signup */}
                 <p className="text-center text-gray-600 mt-6">
                     Don’t have an account?{" "}
-                    <a
-                        href="/signup"
+
+                   <Link to={'/register'} 
                         className="text-blue-600 font-semibold hover:underline"
                     >
                         Sign Up
-                    </a>
+                    </Link>
                 </p>
 
                 {/* Divider */}

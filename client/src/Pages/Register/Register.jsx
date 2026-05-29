@@ -6,6 +6,8 @@ import {
     PencilLine,
     EyeOff,} from "lucide-react";
 
+import { Link } from "react-router-dom";
+
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -146,12 +148,10 @@ const Register = () => {
                 {/* Signup */}
                 <p className="text-center text-gray-600 mt-6">
                     Already have an account?{" "}
-                    <a
-                        href="/signup"
-                        className="text-blue-600 font-semibold hover:underline"
-                    >
+                    <Link to={'/login'}
+                        className="text-blue-600 font-semibold hover:underline">
                     Sign In
-                    </a>
+                    </Link>
                 </p>
 
                 {/* Divider */}
