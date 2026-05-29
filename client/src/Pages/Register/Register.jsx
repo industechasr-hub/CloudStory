@@ -4,7 +4,9 @@ import {
     Lock,
     Eye,
     PencilLine,
-    EyeOff,} from "lucide-react";
+    UserRoundKey,
+    EyeOff,
+} from "lucide-react";
 
 import { Link } from "react-router-dom";
 
@@ -16,28 +18,28 @@ const Register = () => {
     const [email, setEmail] = useState("")
 
     const [password, setPassword] = useState("")
-    
-    const  [signUpCredential, setSignUpCredential] = useState({
+
+    const [signUpCredential, setSignUpCredential] = useState({
         name: "",
-        email:"",
-        password:""
+        email: "",
+        password: ""
     })
-    
-    const handelSignIn = (e)=>{
+
+    const handelSignIn = (e) => {
         e.preventDefault()
         setSignUpCredential({
-            name:name,
-            email:email,
-            password:password
+            name: name,
+            email: email,
+            password: password
         })
         setName("")
         setEmail("")
         setPassword("")
-        
+
     }
 
     // console.log(signUpCredential);
-    
+
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
@@ -62,6 +64,8 @@ const Register = () => {
                             Name
                         </label>
 
+
+
                         <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
                             <PencilLine className="text-gray-400 mr-3" size={20} />
 
@@ -70,8 +74,30 @@ const Register = () => {
                                 placeholder="Name"
                                 className="w-full outline-none bg-transparent"
                                 value={name}
-                                onChange={(e)=>setName(e.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                             />
+                        </div>
+                    </div>
+
+
+
+                    <div>
+                        <label className="block mb-2 font-medium text-gray-700">
+                            Role
+                        </label>
+
+
+
+                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
+                            <UserRoundKey className="text-gray-400 mr-3" size={20} />
+
+                            <select
+                                className="w-full outline-none bg-transparent"
+                            >
+                                <option value="">Select Role</option>
+                                <option value="user">User</option>
+                                <option value="author">Author</option>
+                            </select>
                         </div>
                     </div>
 
@@ -90,7 +116,7 @@ const Register = () => {
                                 placeholder="you@example.com"
                                 className="w-full outline-none bg-transparent"
                                 value={email}
-                                onChange={(e)=>setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                     </div>
@@ -109,7 +135,7 @@ const Register = () => {
                                 placeholder="********"
                                 className="w-full outline-none bg-transparent"
                                 value={password}
-                                onChange={(e)=>setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
 
                             <button
@@ -150,7 +176,7 @@ const Register = () => {
                     Already have an account?{" "}
                     <Link to={'/login'}
                         className="text-blue-600 font-semibold hover:underline">
-                    Sign In
+                        Sign In
                     </Link>
                 </p>
 
