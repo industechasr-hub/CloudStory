@@ -39,3 +39,33 @@ export const registerUser = async (req, res, next) => {
         next(err)
     }
 }
+
+export const loginUser = async (req, res ,next)=>{
+
+    try {
+        const {email, password} =  req.body
+
+        const userExisted = await userModel.findOne({email})
+
+        if(!userExisted){
+            next(createError(400, "Invalid Credentials"))
+        }
+        const isPasswordMatched = bcrypt.compareSync(password, userExisted.password)
+
+        if(!isPasswordMatched){
+            next(createError(400, "Invalid Credentials"))
+        }
+
+        const token = generateToken(userExisted._id)
+
+        res.status(200).json({
+            success: true,
+            token: token,
+            user: userExisted
+        })
+    } catch (error) {
+        next(error)
+        
+    }
+
+}
