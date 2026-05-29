@@ -6,8 +6,11 @@ import { Menu, X, ChevronDown } from "lucide-react";
 function Navbar()  {
   const [open, setOpen] = useState(false);
 
+  const [Search, seSearch] = useState()
+
+
   return (
-    <nav className="w-full bg-[#f5f5f5] border-b border-gray-200">
+    <nav className="w-full">
       {/* Desktop + Mobile Top */}
       <div className="flex items-center justify-between px-6 md:px-10 py-1">
         
@@ -25,22 +28,30 @@ function Navbar()  {
           {/* Logo */}
           <img className='h-15' src={logo} alt="" />
 
+          <div className='pt-4 text-sm w-96'> 
+            <input 
+          className='placeholder:pl-1 bg-gray-200 rounded-2xl p-1.5 outline-none w-80'
+          placeholder='Search books'
+          type="search" />
+          
+          </div>
+
           {/* Desktop Links */}
           <ul className="hidden md:flex items-center gap-10 ml-10 font-semibold text-[16px]">
             <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
-              Explore <ChevronDown size={16} />
+              Home
             </li>
 
             <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
-              Hire Talent <ChevronDown size={18} />
+              About <ChevronDown size={16} />
             </li>
 
             <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
-              Get Hired <ChevronDown size={18} />
+              Contact <ChevronDown size={18} />
             </li>
 
             <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
-              Community <ChevronDown size={18} />
+              Shop <ChevronDown size={18} />
             </li>
           </ul>
         </div>
@@ -81,24 +92,21 @@ function Navbar()  {
         {/* Mobile Links */}
         <div className="flex flex-col gap-10 px-7 py-10 text-md font-semibold">
           <div className="flex items-center gap-2">
-            Explore <ChevronDown size={22} />
+            Home
           </div>
 
           <div className="flex items-center gap-2">
-            Hire Talent <ChevronDown size={22} />
+            About <ChevronDown size={18} />
           </div>
 
           <div className="flex items-center gap-2">
-            Get Hired <ChevronDown size={22} />
+            Contact <ChevronDown size={18} />
           </div>
 
           <div className="flex items-center gap-2">
-            Community <ChevronDown size={22} />
+            Shop <ChevronDown size={18} />
           </div>
 
-          <button className="text-pink-500 text-left font-bold">
-            Start Project Brief
-          </button>
         </div>
       </div>
     </nav>
