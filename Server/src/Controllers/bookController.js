@@ -1,28 +1,49 @@
 import createError from 'http-errors';
 import { bookModel } from '../models/bookModel.js';
+import cloudinary from '../middleware/cloudinaryMiddleware.js';
 
 export const createBook = async (req, res, next) => {
+
     try {
-        const { title, authorName, description, pdfUrl, uploadedBy} = req.body;
+        // const {title, description, authorName} =
 
-        const newBook = new bookModel({ title, authorName, description, pdfUrl, uploadedBy });
+        const imagePath = req.files.cover[0].path
 
-        if(!title || !authorName || !description || !pdfUrl || !uploadedBy){
-            next(createError(400, "Missing Fields - One of the Required Fields Is Empty"))
-        }   
+        const pdfPath = req.files.pdf[0].path
 
+        const uploadCoverImage = await cloudinary.uploader.upload(imagePath, {
+            folder: "book-covers"
+        })
 
-        await newBook.save();
+        const uploadPdf = await cloudinary.uploader.upload(pdfPath, {
+            resource_type: "raw",
+            folder: "book-pdfs"
+        })
+
+        const uploadedImageUrl = uploadCoverImage.secure_url
+
+        const uploadedPdfUrl = uploadPdf.secure_url
+
+        const uploadedBook = await bookModel.create({
+            title,
+            description,
+            authorName,
+            coverImage: uploadedImageUrl,
+            pdfUrl: uploadedPdfUrl
+        })
 
         res.status(201).json({
             success: true,
-            message: "Book Created Successfully",
-            book: newBook
-        });
+            uploadedBook
+        })
 
-    }catch (err) {
-        next(err)
+
+
+
+    } catch (error) {
+        next(error)
     }
+
 }
 
 export const getAllBooks = async (req, res, next) => {
@@ -37,13 +58,13 @@ export const getAllBooks = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-};  
+};
 
- export const getSingleBook = async (req, res, next) => {
+export const getSingleBook = async (req, res, next) => {
     try {
-        const { title } = req.params;
+        const { bookID } = req.params;
 
-        const book = await bookModel.findOne({ title });
+        const book = await bookModel.findById(bookID);
 
         if (!book) {
             next(createError(404, "Book Not Found"))

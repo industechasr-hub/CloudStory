@@ -9,17 +9,21 @@ const bookSchema = new Schema({
         type:String,
         required:true
     },
+    cover:{
+        type:String,
+        required:true
+    },
     authorName:{
         type:String,
         required:true
     },
-    pdfUrl:{
+    pdf:{
         type:String,
         required:true
-    },
-    uploadedBy:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: "User"
+    }, 
+    uploaded:{
+        type:String,
+        required:true
     }
 },{timestamp:true})
 
