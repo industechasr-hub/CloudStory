@@ -5,7 +5,7 @@ import cloudinary from '../middleware/cloudinaryMiddleware.js';
 export const createBook = async (req, res, next) => {
 
     try {
-        // const {title, description, authorName} =
+        const {title, description, authorName} = req.body
 
         const imagePath = req.files.cover[0].path
 
@@ -28,17 +28,16 @@ export const createBook = async (req, res, next) => {
             title,
             description,
             authorName,
-            coverImage: uploadedImageUrl,
-            pdfUrl: uploadedPdfUrl
+            cover: uploadedImageUrl,
+            pdf: uploadedPdfUrl,
+            uploadedBy: req.user._id
         })
 
         res.status(201).json({
             success: true,
-            uploadedBook
+            uploadedBook,
+            role : req.user.role
         })
-
-
-
 
     } catch (error) {
         next(error)

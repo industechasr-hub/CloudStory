@@ -21,9 +21,9 @@ const bookSchema = new Schema({
         type:String,
         required:true
     }, 
-    uploaded:{
-        type:String,
-        required:true
+    uploadedBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "userModel"
     }
 },{timestamp:true})
 
