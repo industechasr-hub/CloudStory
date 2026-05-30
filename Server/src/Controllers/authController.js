@@ -69,3 +69,11 @@ export const loginUser = async (req, res ,next)=>{
     }
 
 }
+
+
+export const authorOnly = (req, res, next) => {
+    if (req.body.role !== "author"){
+        return next(createError(403, "Access Dennied - Authors Only"))
+    }
+    next()
+}
