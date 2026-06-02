@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-
   const [Search, seSearch] = useState()
 
 
