@@ -5,6 +5,7 @@ import cloudinary from '../middleware/cloudinaryMiddleware.js';
 export const createBook = async (req, res, next) => {
 
     try {
+
         const {title, description, authorName} = req.body
 
         const imagePath = req.files.cover[0].path
@@ -46,8 +47,13 @@ export const createBook = async (req, res, next) => {
 }
 
 export const getAllBooks = async (req, res, next) => {
+    
     try {
         const books = await bookModel.find();
+
+        if(!getAllBooks){
+            next(createError(404, "No books Available."))
+        }
 
         res.status(200).json({
             success: true,
@@ -61,7 +67,7 @@ export const getAllBooks = async (req, res, next) => {
 
 export const getSingleBook = async (req, res, next) => {
     try {
-        const { bookID } = req.params;
+        const { bookID } = req.params._id;
 
         const book = await bookModel.findById(bookID);
 
@@ -74,6 +80,7 @@ export const getSingleBook = async (req, res, next) => {
                 book: book
             });
         }
+        
     } catch (err) {
         next(err);
     }

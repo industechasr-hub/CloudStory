@@ -17,6 +17,6 @@ bookRoute.post('/create-book', authMiddleware, authorOnly, upload.fields([
 
 bookRoute.get('/', getAllBooks)
 
-bookRoute.get('/:_title', getSingleBook)
+bookRoute.get('/:_id', getSingleBook)
 
 export default bookRoute;

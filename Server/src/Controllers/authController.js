@@ -6,27 +6,33 @@ import generateToken from "../utils/generateToken.js"
 export const registerUser = async (req, res, next) => {
 
     try {
+        ///getting response from client...!!!
         const { name, email, password, role } = req.body
 
+        //verifying the fields all required...!!!
         if (!name || !email || !password || !role) {
             next(createError(400, "Missing Fields - One of the Required Fields Is Empty"))
         }
 
+        //checking exist user
         const userExisted = await userModel.findOne({ email })
 
         if (userExisted) {
             next(createError(400, "User Already Existed..!!!"))
         }
 
+        //password hashing...!!!
         const hashedPassword = bcrypt.hashSync(password, 10)
 
+        //creating user in DB...!!!
         const user = await userModel.create({
             name,
             email,
             password: hashedPassword,
             role
         })
-
+        
+        //Generate token...!!!
         const token = generateToken(user._id)
 
         res.status(201).json({
@@ -67,7 +73,7 @@ export const loginUser = async (req, res ,next)=>{
         next(error)
         
     }
-
+ 
 }
 
 
