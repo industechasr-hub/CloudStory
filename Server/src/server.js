@@ -5,12 +5,17 @@ import errorMiddleware from './middleware/errormiddleware.js'
 import connectDB from './config/dbConfig.js'
 import authRoute from './routes/authRouth.js'
 import bookRoute from './routes/bookRoute.js'
+import cors from 'cors'
 
 const app = express()
+
+
 
 const PORT = process.env.PORT || 3001
 
 //middleware
+app.use(cors())
+
 app.use(express.json())
 
 app.use(express.urlencoded())
@@ -39,4 +44,4 @@ app.use(errorMiddleware)
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 
-})
+}) 
