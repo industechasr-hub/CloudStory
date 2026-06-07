@@ -29,7 +29,7 @@ const Login = () => {
         
        
     }
- console.log(logInCredential);
+//  console.log(logInCredential);
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
@@ -113,7 +113,7 @@ const Login = () => {
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-lg font-semibold shadow-lg transition"
                         onClick={handelSignIn}
                     >
-                        Sign In
+                        Log In
                     </button>
                 </form>
 

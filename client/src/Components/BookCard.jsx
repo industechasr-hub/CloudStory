@@ -7,7 +7,10 @@ function BookCard() {
 
 
   return (
-    <div>BookCard</div>
+    <>
+    
+    
+    </>
   )
 }
 
