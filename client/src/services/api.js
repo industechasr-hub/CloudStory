@@ -41,3 +41,11 @@ export const logIn = async (e, logInCredential) => {
   }
 };
 
+
+//fetch books
+export const fetchBooks = async () => {
+  const response = await axios.get("/api/book");
+  // console.log(response.data.books);
+  return response.data.books;
+};
+

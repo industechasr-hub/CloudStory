@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const [Search, seSearch] = useState()
+  
 
 
   return (
@@ -28,20 +28,12 @@ function Navbar() {
           {/* Logo */}
           <img className='h-15' src={logo} alt="" />
 
-          <div className='pt-4 text-sm w-96'>
-            <input
-              className='placeholder:pl-1 bg-gray-200 rounded-2xl p-1.5 outline-none w-80'
-              placeholder='Search books'
-              type="search" />
-
-          </div>
-
           {/* Desktop Links */}
           <ul className="hidden md:flex items-center gap-10 ml-10 font-semibold text-[16px]">
             <Link to="/home">
-            <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
-              Home
-            </li>
+              <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
+                Home
+              </li>
             </Link>
 
             <Link to="/about">
@@ -67,7 +59,7 @@ function Navbar() {
         {/* Right Side */}
         <div className="flex items-center gap-5">
 
-          <Link to="/register"> <button className="hidden md:block font-semibold text-lg duration-300 hover:underline text-blue-950">
+          <Link to="/register"> <button className="md:block font-semibold text-lg duration-300 hover:underline text-blue-950">
             Sign up
           </button>
           </Link>
@@ -85,7 +77,7 @@ function Navbar() {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-screen w-full bg-[#f5f5f5] z-50 transform transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 left-0 h-screen w-2/3 bg-white z-50 transform transition-transform duration-400 ${open ? "translate-x-0" : "-translate-x-full"
           }`}
       >
         {/* Top */}
@@ -98,28 +90,35 @@ function Navbar() {
             <img className='h-14' src={logo} alt="" />
           </div>
 
-          <button className="bg-[#070327] text-white px-8 py-2 rounded-full font-semibold text-md">
+          {/* <button className="bg-[#070327] text-white px-8 py-2 rounded-full font-semibold text-md">
             Log in
-          </button>
+          </button> */}
         </div>
 
         {/* Mobile Links */}
         <div className="flex flex-col gap-10 px-7 py-10 text-md font-semibold">
-          <div className="flex items-center gap-2">
+          <Link to="/home" 
+          className="flex items-center gap-2">
             Home
-          </div>
+          </Link>
 
-          <div className="flex items-center gap-2">
+          <Link
+            to="/about"
+            className="flex items-center gap-2">
             About <ChevronDown size={18} />
-          </div>
+          </Link>
 
-          <div className="flex items-center gap-2">
+          <Link 
+            to="/contact" 
+            className="flex items-center gap-2">
             Contact <ChevronDown size={18} />
-          </div>
+          </Link>
 
-          <div className="flex items-center gap-2">
+          <Link
+            to="/shop" 
+            className="flex items-center gap-2">
             Shop <ChevronDown size={18} />
-          </div>
+          </Link>
 
         </div>
       </div>
