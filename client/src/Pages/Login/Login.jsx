@@ -1,159 +1,166 @@
 import React, { useState } from "react";
 import {
-    Mail,
-    Lock,
-    Eye,
-    EyeOff,} from "lucide-react";
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+} from "lucide-react";
 
 import { Link } from "react-router-dom";
+import { logIn } from "../../services/api";
+import img from '../../../src/assets/bg2.webp'
 
 const Login = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const [email, setEmail] = useState("")
-    // console.log(email);
-    
-    const [password, setPassword] = useState("")
-    // console.log(password);
-    
-    const  [logInCredential, setLogInCredential] = useState({
-        email:"",
-        password:""
-    })
-    
-    const handelSignIn = (e)=>{
-        e.preventDefault()
-        setLogInCredential({
-            email:email,
-            password:password
-        })
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [logInCredential, setLogInCredential] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handelChange = (e) => {
+    setLogInCredential({
+      ...logInCredential,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handelLogIn = (e) => {
+    e.preventDefault();
+
+    console.log(logInCredential);
+
+    logIn(e, logInCredential);
+
+    setLogInCredential({
+      email: "",
+      password: "",
+    });
+  };
+
+  return (
+    <>
+      <div className=" relative min-h-screen flex items-center justify-center px-4">
+
+        <img className=" absolute h-full w-full" src={img} alt="" />
         
-       
-    }
-//  console.log(logInCredential);
+        <div className="w-full backdrop-blur-md max-w-md rounded-3xl shadow-xl p-8 border-2 border-gray-300">
+        
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-black">
+              Welcome Back
+            </h1>
 
-    return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-            <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8">
+            <p className="text-gray-700 mt-2">
+              Login to continue
+            </p>
+          </div>
 
-                {/* Heading */}
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold text-black">
-                        Welcome Back
-                    </h1>
+          <form className="mt-10 space-y-6" onSubmit={handelLogIn}>
+            {/* Email */}
+            <div>
+              <label className="block mb-2 font-medium">
+                Email
+              </label>
 
-                    <p className="text-gray-500 mt-2">
-                        Login to continue
-                    </p>
-                </div>
+              <div className="flex items-center border border-gray-400 rounded-xl px-4 py-3">
+                <Mail className="text-gray-400 mr-3" size={20} />
 
-                {/* Form */}
-                <form className="mt-10 space-y-6">
-
-                    {/* Email */}
-                    <div>
-                        <label className="block mb-2 font-medium text-gray-700">
-                            Email
-                        </label>
-
-                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
-                            <Mail className="text-gray-400 mr-3" size={20} />
-
-                            <input
-                                type="email"
-                                placeholder="you@example.com"
-                                className="w-full outline-none bg-transparent"
-                                value={email}
-                                onChange={(e)=>setEmail(e.target.value)}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Password */}
-                    <div>
-                        <label className="block mb-2 font-medium text-gray-700">
-                            Password
-                        </label>
-
-                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
-                            <Lock className="text-gray-400 mr-3" size={20} />
-
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                placeholder="********"
-                                className="w-full outline-none bg-transparent"
-                                onChange={(e)=>setPassword(e.target.value)}
-                            />
-
-                            <button
-                                type="button"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? (
-                                    <EyeOff className="text-gray-400" size={20} />
-                                ) : (
-                                    <Eye className="text-gray-400" size={20} />
-                                )}
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Forgot Password */}
-                    <div className="flex justify-end">
-                        <a
-                            href="/forgot-password"
-                            className="text-blue-600 text-sm hover:underline"
-                        >
-                            Forgot Password?
-                        </a>
-                    </div>
-
-                    {/* Button */}
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-lg font-semibold shadow-lg transition"
-                        onClick={handelSignIn}
-                    >
-                        Log In
-                    </button>
-                </form>
-
-                {/* Signup */}
-                <p className="text-center text-gray-600 mt-6">
-                    Don’t have an account?{" "}
-
-                   <Link to={'/register'} 
-                        className="text-blue-600 font-semibold hover:underline"
-                    >
-                        Sign Up
-                    </Link>
-                </p>
-
-                {/* Divider */}
-                <div className="flex items-center my-8">
-                    <div className="flex-1 h-[1px] bg-gray-300"></div>
-
-                    <span className="px-4 text-gray-500 text-sm">
-                        Or continue with
-                    </span>
-
-                    <div className="flex-1 h-[1px] bg-gray-300"></div>
-                </div>
-
-                {/* Social Buttons */}
-                <div className="grid grid-cols gap-4">
-
-                    <button className="border border-gray-300 rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
-                            alt="google"
-                            className="w-5 h-5"
-                        />
-                        Google
-                    </button>
-                </div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  className="w-full outline-none bg-transparent"
+                  value={logInCredential.email}
+                  onChange={handelChange}
+                  required
+                />
+              </div>
             </div>
+
+            {/* Password */}
+            <div>
+              <label className="block mb-2 font-medium">
+                Password
+              </label>
+
+              <div className="flex items-center border border-gray-400 rounded-xl px-4 py-3">
+                <Lock className="text-gray-400 mr-3" size={20} />
+
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="********"
+                  className="w-full outline-none bg-transparent"
+                  value={logInCredential.password}
+                  onChange={handelChange}
+                  required
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="text-gray-700" size={20} />
+                  ) : (
+                    <Eye className="text-gray-400" size={20} />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex justify-end">
+              <a
+                href="/forgot-password"
+                className="text-xs font-semibold hover:underline"
+              >
+                Forgot Password?
+              </a>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl text-lg font-semibold shadow-lg transition"
+            >
+              Log In
+            </button>
+          </form>
+
+          <p className="text-center mt-6">
+            Don’t have an account?{" "}
+            <Link
+              to="/register"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Sign Up
+            </Link>
+          </p>
+
+          <div className="flex items-center my-8">
+            <div className="flex-1 h-[1px] bg-gray-600"></div>
+
+            <span className="px-4 text-sm">
+              Or continue with
+            </span>
+
+            <div className="flex-1 h-[1px] bg-gray-600"></div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4">
+            <button className="border border-gray-500 rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                alt="google"
+                className="w-5 h-5"
+              />
+              Google
+            </button>
+          </div>
         </div>
-    );
+      </div>
+    </>
+  );
 };
 
 export default Login;

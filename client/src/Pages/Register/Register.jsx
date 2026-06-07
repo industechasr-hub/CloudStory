@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import {
-    Mail,
-    Lock,
-    Eye,
-    PencilLine,
-    UserRoundKey,
-    EyeOff,
-} from "lucide-react";
+import { Mail, Lock, Eye, PencilLine, UserRoundKey, EyeOff, } from "lucide-react";
 import { Link } from "react-router-dom";
 import { signUp } from "../../services/api";
+import regbg from "../../assets/bg2.webp"
 
 
 const Register = () => {
@@ -28,7 +22,7 @@ const Register = () => {
         });
     };
 
-    const handelSignUp =  (e) => {
+    const handelSignUp = (e) => {
         e.preventDefault();
 
         signUp(e, signUpCredential);
@@ -42,28 +36,31 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-            <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8">
+        <>
+        <div className=" relative min-h-screen flex justify-center  items-center px-10">
+            <img className="absolute inset-0 w-full h-full object-cover" src={regbg} alt="" srcset="" />
+
+            <div className=" absolute w-full max-w-md backdrop-blur-lg rounded-3xl shadow-xl p-8 border-2 border-gray-300">
                 {/* Heading */}
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold text-black">
+                    <h1 className="text-3xl font-bold text-orange-600">
                         Create an account
                     </h1>
 
-                    <p className="text-gray-500 mt-2">
+                    <p className="mt-1">
                         Sign up to get started
                     </p>
                 </div>
 
                 {/* Form */}
-                <form className="mt-10 space-y-6" onSubmit={handelSignUp}>
+                <form className="mt-8 space-y-2" onSubmit={handelSignUp}>
                     {/* Name */}
                     <div>
-                        <label className="block mb-2 font-medium text-gray-700">
+                        <label className="block mb-2 font-medium text-black">
                             Name
                         </label>
 
-                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
+                        <div className="flex items-center border border-gray-400 rounded-xl px-4 py-2">
                             <PencilLine className="text-gray-400 mr-3" size={20} />
 
                             <input
@@ -79,11 +76,11 @@ const Register = () => {
 
                     {/* Role */}
                     <div>
-                        <label className="block mb-2 font-medium text-gray-700">
+                        <label className="block mb-2 font-medium">
                             Role
                         </label>
 
-                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
+                        <div className="flex items-center border border-gray-400 rounded-xl px-4 py-3">
                             <UserRoundKey className="text-gray-400 mr-3" size={20} />
 
                             <select
@@ -101,11 +98,11 @@ const Register = () => {
 
                     {/* Email */}
                     <div>
-                        <label className="block mb-2 font-medium text-gray-700">
+                        <label className="block mb-2 font-medium">
                             Email
                         </label>
 
-                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
+                        <div className="flex items-center border border-gray-400 rounded-xl px-4 py-3">
                             <Mail className="text-gray-400 mr-3" size={20} />
 
                             <input
@@ -121,11 +118,11 @@ const Register = () => {
 
                     {/* Password */}
                     <div>
-                        <label className="block mb-2 font-medium text-gray-700">
+                        <label className="block mb-2 font-medium">
                             Password
                         </label>
 
-                        <div className="flex items-center border border-gray-300 rounded-xl px-4 py-3">
+                        <div className="flex items-center border border-gray-400 rounded-xl px-4 py-3">
                             <Lock className="text-gray-400 mr-3" size={20} />
 
                             <input
@@ -142,9 +139,9 @@ const Register = () => {
                                 onClick={() => setShowPassword(!showPassword)}
                             >
                                 {showPassword ? (
-                                    <EyeOff className="text-gray-400" size={20} />
+                                    <EyeOff className="text-gray-700" size={20} />
                                 ) : (
-                                    <Eye className="text-gray-400" size={20} />
+                                    <Eye className="text-gray-700" size={20} />
                                 )}
                             </button>
                         </div>
@@ -154,7 +151,7 @@ const Register = () => {
                     <div className="flex justify-end">
                         <Link
                             to="/forgot-password"
-                            className="text-red-600 text-xs font-semibold hover:underline"
+                            className="text-xs font-semibold hover:underline"
                         >
                             Forgot Password?
                         </Link>
@@ -163,37 +160,37 @@ const Register = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-xl text-lg font-semibold shadow-lg transition"
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-xl text-lg font-semibold shadow-lg transition"
                     >
                         Sign Up
                     </button>
                 </form>
 
                 {/* Login Link */}
-                <p className="text-center text-gray-600 mt-6">
+                <p className="text-center mt-3">
                     Already have an account?{" "}
                     <Link
                         to="/login"
-                        className="text-blue-600 font-semibold hover:underline"
+                        className="text-blue-500 font-semibold hover:underline"
                     >
                         Log In
                     </Link>
                 </p>
 
                 {/* Divider */}
-                <div className="flex items-center my-8">
-                    <div className="flex-1 h-[1px] bg-gray-300"></div>
+                <div className="flex items-center my-5">
+                    <div className="flex-1 h-[1px] bg-gray-400"></div>
 
-                    <span className="px-4 text-gray-500 text-sm">
+                    <span className="px- text-sm">
                         Or continue with
                     </span>
 
-                    <div className="flex-1 h-[1px] bg-gray-300"></div>
+                    <div className="flex-1 h-[1px] bg-gray-400"></div>
                 </div>
 
                 {/* Google Login */}
                 <div className="grid grid-cols-1 gap-4">
-                    <button className="border border-gray-300 rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
+                    <button className="border border-gray-500 rounded-xl py-2 flex items-center justify-center gap-2 hover:bg-gray-50 transition">
                         <img
                             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
                             alt="google"
@@ -204,6 +201,7 @@ const Register = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

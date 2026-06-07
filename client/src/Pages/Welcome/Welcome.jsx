@@ -9,7 +9,7 @@ function Welcome() {
       <div className='grid grid-cols-1 md:grid-cols-2 items-center min-h-screen'>
 
         <div className='flex items-center justify-center '>
-          <img className='ease-in-out duration-1000 hover:scale-105' src={bgimg} alt="" />
+          <img className='ease-in-out duration-1000' src={bgimg} alt="" />
         </div>
 
         <div className='flex flex-col items-center p-4 px-17 gap-7'>
