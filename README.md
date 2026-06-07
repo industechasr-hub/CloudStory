@@ -83,4 +83,4 @@ JWT_SECRET=
 
 ## Author
 
-Akash
+Akash Singh Rajput
