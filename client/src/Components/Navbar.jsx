@@ -26,7 +26,7 @@ function Navbar() {
           </button>
 
           {/* Logo */}
-          <img className='h-15' src={logo} alt="" />
+          <img className='h-12 md:h-15 lg:h-17 ease-in-out duration-1000' src={logo} alt="" />
 
           {/* Desktop Links */}
           <ul className="hidden md:flex items-center gap-15 ml-50 font-semibold text-[16px]">
@@ -59,15 +59,14 @@ function Navbar() {
         {/* Right Side */}
         <div className="flex items-center gap-5">
 
-          <Link to="/register"> <button className="md:block font-semibold text-lg duration-300 hover:underline text-blue-950">
-            Sign up
-          </button>
-          </Link>
-
-
-
           <Link to="/login">
-            <button className="bg-cyan-950 text-white px-5 py-2 rounded-full font-semibold text-md duration-300 hover:bg-cyan-700">
+            <button className="sm:hidden md:block text-cyan-950 px-5 py-2 rounded-full font-bold text-xs duration-300 hover:bg-cyan-700">
+              Sign Up
+            </button>
+          </Link>
+          
+          <Link to="/login">
+            <button className="bg-cyan-950 text-white px-5 py-2 rounded-full font-semibold text-xs duration-300 hover:bg-cyan-700">
               Log in
             </button>
           </Link>
@@ -87,7 +86,7 @@ function Navbar() {
               <X size={36} />
             </button>
 
-            <img className='h-14' src={logo} alt="" />
+            <img className='h-12' src={logo} alt="" />
           </div>
 
           {/* <button className="bg-[#070327] text-white px-8 py-2 rounded-full font-semibold text-md">
@@ -96,7 +95,7 @@ function Navbar() {
         </div>
 
         {/* Mobile Links */}
-        <div className="flex flex-col gap-10 px-7 py-10 text-md font-semibold">
+        <div className="flex flex-col gap-8 px-6 py-4 text-md font-semibold">
           <Link to="/home" 
           className="flex items-center gap-2">
             Home
@@ -115,9 +114,15 @@ function Navbar() {
           </Link>
 
           <Link
-            to="/shop" 
+            to="/books" 
             className="flex items-center gap-2">
             Books <ChevronDown size={18} />
+          </Link>
+
+          <Link
+            to="/profile" 
+            className="flex items-center gap-2">
+            Profile
           </Link>
 
         </div>

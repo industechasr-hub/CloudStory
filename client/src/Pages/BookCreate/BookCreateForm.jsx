@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function BookUploadForm() {
+function BookCreateForm() {
   const [bookData, setBookData] = useState({
     title: "",
     description: "",
-    author: "",
+    authorName: "",
     cover: null,
     pdf: null,
   });
@@ -150,4 +150,4 @@ function BookUploadForm() {
   );
 }
 
-export default BookUploadForm;
+export default BookCreateForm;
