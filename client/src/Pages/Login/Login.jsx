@@ -139,13 +139,13 @@ const Login = () => {
           </p>
 
           <div className="flex items-center my-8">
-            <div className="flex-1 h-[1px] bg-gray-600"></div>
+            <div className="flex-1 h-0.5 bg-gray-400"></div>
 
             <span className="px-4 text-sm">
               Or continue with
             </span>
 
-            <div className="flex-1 h-[1px] bg-gray-600"></div>
+            <div className="flex-1 h-0.5 bg-gray-400"></div>
           </div>
 
           <div className="grid grid-cols-1 gap-4">

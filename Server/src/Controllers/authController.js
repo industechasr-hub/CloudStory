@@ -11,14 +11,14 @@ export const registerUser = async (req, res, next) => {
 
         //verifying the fields all required...!!!
         if (!name || !email || !password || !role) {
-            next(createError(400, "Missing Fields - One of the Required Fields Is Empty"))
+           return next(createError(400, "Missing Fields - One of the Required Fields Is Empty"))
         }
 
         //checking exist user
         const userExisted = await userModel.findOne({ email })
 
         if (userExisted) {
-            next(createError(400, "User Already Existed..!!!"))
+           return next(createError(400, "User Already Existed..!!!"))
         }
 
         //password hashing...!!!
@@ -54,12 +54,12 @@ export const loginUser = async (req, res ,next)=>{
         const userExisted = await userModel.findOne({email})
 
         if(!userExisted){
-            next(createError(400, "Invalid Credentials"))
+            return next(createError(400, "Invalid Credentials"))
         }
-        const isPasswordMatched = bcrypt.compareSync(password, userExisted.password)
+        const isPasswordMatched = await bcrypt.compare(password, userExisted.password)
 
         if(!isPasswordMatched){
-            next(createError(400, "Invalid Credentials"))
+           return next(createError(400, "Invalid Credentials"))
         }
 
         const token = generateToken(userExisted._id)

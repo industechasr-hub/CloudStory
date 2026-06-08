@@ -28,7 +28,7 @@ function Home() {
 
   <div className="flex flex-col">
    
-    <div className="grid grid-cols-1 md:grid-cols-2 items-center min-h-[500px] px-4 md:px-10 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 items-center min-h-125 px-4 md:px-10 gap-8">
       
      
       <div>

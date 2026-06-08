@@ -86,7 +86,7 @@ function About() {
         </div>
 
 
-        <div className="bg-gradient-to-r from-pink-400 to-orange-400 text-white rounded-2xl p-10 text-center">
+        <div className="bg-linear-to-r from-pink-400 to-orange-400 text-white rounded-2xl p-10 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Join Our Community
           </h2>

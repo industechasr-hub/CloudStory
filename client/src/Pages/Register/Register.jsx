@@ -180,13 +180,13 @@ const Register = () => {
 
                 {/* Divider */}
                 <div className="flex items-center my-5">
-                    <div className="flex-1 h-[1px] bg-gray-400"></div>
+                    <div className="flex-1 h-0.5 bg-gray-400"></div>
 
                     <span className="px- text-sm">
                         Or continue with
                     </span>
 
-                    <div className="flex-1 h-[1px] bg-gray-400"></div>
+                    <div className="flex-1 h-0.5 bg-gray-400"></div>
                 </div>
 
                 {/* Google Login */}
