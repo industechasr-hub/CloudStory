@@ -7,7 +7,8 @@ import Register from '../pages/Register/Register.jsx'
 import Home from '../pages/Home/Home.jsx'
 import About from '../pages/About/About.jsx'
 import Contact from '../pages/Contact/Contact.jsx'
-import Shop from '../pages/Shop/Shop.jsx'
+import Books from '../Pages/Books/Books.jsx'
+
 
 function AppRoutes() {
   return (
@@ -26,7 +27,7 @@ function AppRoutes() {
 
       <Route path='/contact' element={<Contact />} />
 
-      <Route path='/shop' element={<Shop />} />
+      <Route path='/books' element={<Books/>} />
 
     </Routes>
 

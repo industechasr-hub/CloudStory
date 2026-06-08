@@ -5,6 +5,7 @@ import BookCard from '../../Components/BookCard'
 import { fetchBooks } from '../../services/api'
 import bgimg from '../../assets/bgi.png'
 import { Link } from 'react-router-dom'
+import Footer from '../../Components/Footer'
 
 function Home() {
 
@@ -86,6 +87,7 @@ function Home() {
       <BookCard books={books} />
     </div>
   </div>
+  <Footer/>
 </>
 
   )

@@ -29,7 +29,7 @@ function Navbar() {
           <img className='h-15' src={logo} alt="" />
 
           {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-10 ml-10 font-semibold text-[16px]">
+          <ul className="hidden md:flex items-center gap-15 ml-50 font-semibold text-[16px]">
             <Link to="/home">
               <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
                 Home
@@ -48,9 +48,9 @@ function Navbar() {
               </li>
             </Link>
 
-            <Link to="/shop">
+            <Link to="/books">
               <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
-                Shop <ChevronDown size={18} />
+                Books <ChevronDown size={18} />
               </li>
             </Link>
           </ul>
@@ -117,7 +117,7 @@ function Navbar() {
           <Link
             to="/shop" 
             className="flex items-center gap-2">
-            Shop <ChevronDown size={18} />
+            Books <ChevronDown size={18} />
           </Link>
 
         </div>

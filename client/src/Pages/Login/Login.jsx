@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { logIn } from "../../services/api";
 import img from '../../../src/assets/bg2.webp'
+import Footer from "../../Components/Footer";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -159,6 +160,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

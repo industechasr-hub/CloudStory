@@ -3,6 +3,7 @@ import { Mail, Lock, Eye, PencilLine, UserRoundKey, EyeOff, } from "lucide-react
 import { Link } from "react-router-dom";
 import { signUp } from "../../services/api";
 import regbg from "../../assets/bg2.webp"
+import Footer from "../../Components/Footer";
 
 
 const Register = () => {
@@ -38,7 +39,7 @@ const Register = () => {
     return (
         <>
         <div className=" relative min-h-screen flex justify-center  items-center px-10">
-            <img className="absolute inset-0 w-full h-full object-cover" src={regbg} alt="" srcset="" />
+            <img className="absolute inset-0 w-full h-full object-cover" src={regbg} alt="img" />
 
             <div className=" absolute w-full max-w-md backdrop-blur-lg rounded-3xl shadow-xl p-8 border-2 border-gray-300">
                 {/* Heading */}
@@ -201,6 +202,7 @@ const Register = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
         </>
     );
 };
