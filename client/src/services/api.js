@@ -1,39 +1,42 @@
 import axios from "axios";
+import { useState } from "react";
 
 
 // register
- export const signUp = async (e, signUpCredential) => {
-    e.preventDefault();
+export const signUp = async (e, signUpCredential) => {
+  e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "/api/auth/register",
-        signUpCredential
-      );
+  try {
+    const response = await axios.post(
+      "/api/auth/register",
+      signUpCredential
+    );
 
-      alert("Account created successfully");
+    alert("Account created successfully");
     //   console.log(response.data);     
-    } catch (error) {
-      console.log(error.response?.data || error.message);
-      alert(error.response?.data?.message || "Something went wrong");
-    }
-  };
+  } catch (error) {
+    console.log(error.response?.data || error.message);
+    alert(error.response?.data?.message || "Something went wrong");
+  }
+};
 
 // login
-export const logIn = async (e, logInCredential) => {
-  e.preventDefault();
+export const logIn = async (logInCredential) => {
 
   try {
     const response = await axios.post(
       "/api/auth/login",
       logInCredential
     );
+    // console.log(response.data);
+    // localStorage.setItem("token", response.data.token);
 
-    console.log(response.data);
-
-    localStorage.setItem("token", response.data.token);
-
+    
     alert("Login successful");
+    console.log(response.data);
+  
+    return response.data;
+
   } catch (error) {
     console.log(error.response?.data || error.message);
 

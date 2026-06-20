@@ -5,11 +5,12 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { logIn } from "../../services/api";
 import img from '../../../src/assets/bg2.webp'
 import Footer from "../../Components/Footer";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +20,7 @@ const Login = () => {
     password: "",
   });
 
+
   const handelChange = (e) => {
     setLogInCredential({
       ...logInCredential,
@@ -26,12 +28,23 @@ const Login = () => {
     });
   };
 
-  const handelLogIn = (e) => {
+  const navigate = useNavigate();
+
+  const handelLogIn = async (e) => {
     e.preventDefault();
 
-    console.log(logInCredential);
+    // console.log(logInCredential);
 
-    logIn(e, logInCredential);
+    const data = await logIn(logInCredential);
+
+    if (data.success) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      navigate("/home");
+    }
+
+    
 
     setLogInCredential({
       email: "",
@@ -44,9 +57,9 @@ const Login = () => {
       <div className=" relative min-h-screen flex items-center justify-center px-4">
 
         <img className=" absolute h-full w-full" src={img} alt="" />
-        
+
         <div className="w-full backdrop-blur-md max-w-md rounded-3xl shadow-xl p-8 border-2 border-gray-300">
-        
+
           <div className="text-center">
             <h1 className="text-4xl font-bold text-black">
               Welcome Back
@@ -160,7 +173,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      
+      <Footer />
     </>
   );
 };

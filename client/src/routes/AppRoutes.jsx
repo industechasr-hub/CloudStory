@@ -8,6 +8,8 @@ import Home from '../pages/Home/Home.jsx'
 import About from '../pages/About/About.jsx'
 import Contact from '../pages/Contact/Contact.jsx'
 import Books from '../Pages/Books/Books.jsx'
+import Profile from '../pages/Profile/Profile.jsx'
+import UploadBookForm from '../Pages/BookCreate/BookCreateForm.jsx'
 
 
 function AppRoutes() {
@@ -28,6 +30,10 @@ function AppRoutes() {
       <Route path='/contact' element={<Contact />} />
 
       <Route path='/books' element={<Books/>} />
+
+      <Route path='/profile' element={<Profile />} />
+
+      <Route path='/upload' element={<UploadBookForm />} />
 
     </Routes>
 
