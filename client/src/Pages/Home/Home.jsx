@@ -1,14 +1,16 @@
 import React from 'react'
 import Navbar from '../../Components/Navbar'
 import { useEffect, useState } from 'react'
-import BookCard from '../../Components/BookCard'
+import BookCard from '../../Components/BookGrid'
 import { fetchBooks } from '../../services/api'
 import bgimg from '../../assets/bgi.png'
 import { Link } from 'react-router-dom'
 import Footer from '../../Components/Footer'
-import UploadBookForm from '../BookCreate/BookCreateForm'
+import UploadBookForm from '../BookCreate/UploadBookForm'
 import Testimonials from '../../Components/Testimonials/Testimonials'
 import img3 from '../../assets/mimg.jpg'
+import BookSlider from '../../Components/BookSlider/BookSlider'
+
 
 function Home() {
 
@@ -89,12 +91,16 @@ function Home() {
             Discover stories from talented writers around the world.
           </p>
         </div>
-
-
-        <div className="mt-8 flex flex-wrap gap-5 justify-center px-4 pb-10">
-          <BookCard books={books} />
+        <div className='p-12'>
+          <BookSlider books={books} />
         </div>
+
+
+        {/* <div className="mt-8 flex flex-wrap gap-5 justify-center px-4 pb-10">
+          <BookCard books={books} />
+        </div> */}
       </div>
+      
       <Testimonials />
       <Footer />
       

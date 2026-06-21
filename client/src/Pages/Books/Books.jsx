@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../../Components/Navbar'
 import { useEffect, useState } from 'react'
-import BookCard from '../../Components/BookCard'
+import BookGrid from '../../Components/BookGrid'
 import { fetchBooks } from '../../services/api'
 import Footer from '../../Components/Footer'
 
@@ -34,7 +34,7 @@ function Books() {
           </button>
         </div>
     <div className="mt-8 flex flex-wrap gap-5 justify-center px-4 pb-10">
-      <BookCard books={books} />
+      <BookGrid books={books} />
     </div>
     </div>
     <Footer/>

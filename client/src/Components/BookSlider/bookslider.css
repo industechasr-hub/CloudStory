@@ -1,0 +1,30 @@
+.swiper {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  
+  
+}
+
+.swiper-slide-active {
+  transform: scale(1.05);
+
+  
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #f97316;
+}
+
+.swiper-pagination-bullet-active {
+  background: #f97316;
+}

@@ -52,3 +52,25 @@ export const fetchBooks = async () => {
   return response.data.books;
 };
 
+
+export const uploadBook = async (bookData) => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.post(
+      "/api/book/create-book",
+      bookData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    // console.log(response.data);
+
+    return response.data;
+  } catch (error) {
+    console.log(error.response?.data || error.message);
+  }
+};

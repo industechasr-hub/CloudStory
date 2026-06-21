@@ -38,8 +38,9 @@ function Navbar() {
             </button>
 
             {/* Logo */}
+            <Link to="/home">
             <img className='h-12 md:h-15 lg:h-17 ease-in-out duration-1000' src={logo} alt="" />
-
+            </Link>
             {/* Desktop Links */}
             <ul className="hidden md:flex items-center gap-15 ml-50 font-semibold text-[16px]">
               <Link to="/home">
@@ -65,6 +66,12 @@ function Navbar() {
                   Books <ChevronDown size={18} />
                 </li>
               </Link>
+
+              {token ? <Link to= "/upload">
+                <li className="flex items-center gap-1 cursor-pointer hover:text-orange-800">
+                  Upload Book
+                </li>
+              </Link> : ""}
             </ul>
           </div>
 
@@ -133,6 +140,12 @@ function Navbar() {
               className="flex items-center gap-2">
               Books <ChevronDown size={18} />
             </Link>
+
+          {token ? <Link
+              to="/upload"
+              className="flex items-center gap-2">
+              Upload Book
+            </Link> : ""}
 
             <Link
               to="/profile"
