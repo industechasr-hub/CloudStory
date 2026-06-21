@@ -16,7 +16,7 @@ const authMiddleware = async  (req, res, next)=>{
 
     const token =  header.split(" ") [1]
 
-    const validToken = jwt.decode(token, JWT_SECRET)
+    const validToken = jwt.verify(token, JWT_SECRET)
 
     const id = validToken.id
 
