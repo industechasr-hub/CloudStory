@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
 
+const API = axios.create({
+  baseURL: "import.meta.env.VITE_API_URL",  
+})
+
 
 // register
 export const signUp = async (e, signUpCredential) => {
   e.preventDefault();
 
   try {
-    const response = await axios.post(
+    const response = await API.post(
       "/api/auth/register",
       signUpCredential
     );
@@ -24,7 +28,7 @@ export const signUp = async (e, signUpCredential) => {
 export const logIn = async (logInCredential) => {
 
   try {
-    const response = await axios.post(
+    const response = await API.post(
       "/api/auth/login",
       logInCredential
     );
@@ -47,7 +51,7 @@ export const logIn = async (logInCredential) => {
 
 //fetch books
 export const fetchBooks = async () => {
-  const response = await axios.get("/api/book");
+  const response = await API.get("/api/book");
   // console.log(response.data.books);
   return response.data.books;
 };
@@ -57,7 +61,7 @@ export const uploadBook = async (bookData) => {
   try {
     const token = localStorage.getItem("token");
 
-    const response = await axios.post(
+    const response = await API.post(
       "/api/book/create-book",
       bookData,
       {
